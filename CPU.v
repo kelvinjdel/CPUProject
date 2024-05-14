@@ -21,3 +21,8 @@ assign Rb= instr[3:0];
 //Ra and Rb only need 4 bits
 assign Abs= intr[7:0];
 assign Mem= instr[19:8]
+
+Decoder IDecoder (.instr(instr)); 
+RegisterFile RegisterFile (.clk(clk), .rst(rst), .iaddr(iaddr), .data_in(data_in), .data_wr(data_wr), .data_out(data_out));
+MemoryMappedPeripherals MEMMP(.clk(clk), .rst(rst), .initial(instr), .count(counter));
+
